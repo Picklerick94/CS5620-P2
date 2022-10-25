@@ -7,13 +7,12 @@ const client = new MongoClient(MONGO_URI);
 const connectDB = async() => {
   try {
     await client.connect();
-    // find db
-    // await listDatabases(client);
     console.log(`MongoDB connected`)
   } catch (err) {
     console.log(err);
-    // exit
-    await client.close();
+  } finally {
+     // exit
+     await client.close();
   }
 }
 

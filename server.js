@@ -24,7 +24,6 @@ app.use(bodyparser.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname, "views")));
 
 // load assets
-// css/style.css
 app.use('/css', express.static(path.resolve(__dirname, "assets/css")));
 app.use('/img', express.static(path.resolve(__dirname, "assets/img")));
 app.use('/js', express.static(path.resolve(__dirname, "assets/js")));

@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const bodyparser = require('body-parser');
 const path = require('path');
 const route = express.Router();
+const connectDB = require('./server/database/connection');
 
 const app = express();
 
@@ -12,6 +13,9 @@ const PORT = process.env.PORT || 8080;
 
 // log request
 app.use(morgan('tiny'));
+
+// mongdb connection
+connectDB();
 
 // parse request to body-parser
 app.use(bodyparser.urlencoded({extended:true}));
@@ -30,5 +34,4 @@ app.use('/', require('./server/routes/router'))
 
 app.listen(3000,()=>{
   console.log(`server is running on http://localhost:${PORT}`);
-  // console.log(process.cwd())
 });

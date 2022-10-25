@@ -1,0 +1,34 @@
+const express = require('express');
+const dotenv = require('dotenv');
+const morgan = require('morgan');
+const bodyparser = require('body-parser');
+const path = require('path');
+const route = express.Router();
+
+const app = express();
+
+dotenv.config({path: 'config.env'});
+const PORT = process.env.PORT || 8080;
+
+// log request
+app.use(morgan('tiny'));
+
+// parse request to body-parser
+app.use(bodyparser.urlencoded({extended:true}));
+
+//set pages view
+app.use(express.static(path.join(__dirname, "views")));
+
+// load assets
+// css/style.css
+app.use('/css', express.static(path.resolve(__dirname, "assets/css")));
+app.use('/img', express.static(path.resolve(__dirname, "assets/img")));
+app.use('/js', express.static(path.resolve(__dirname, "assets/js")));
+
+// load routers
+app.use('/', require('./server/routes/router'))
+
+app.listen(3000,()=>{
+  console.log(`server is running on http://localhost:${PORT}`);
+  // console.log(process.cwd())
+});

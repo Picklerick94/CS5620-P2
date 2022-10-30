@@ -17,6 +17,7 @@ route.get('/student', (req,res) =>{
 // API
 route.post('/api/student', controller.create);
 route.get('/api/students', controller.find);
+route.get('/api/students/:id', controller.findOne);
 route.put('/api/students/:id', controller.update);
 route.delete('/api/students/:id', controller.delete);
 

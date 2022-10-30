@@ -45,6 +45,24 @@ exports.find = async (req,res) => {
     }
 }
 
+exports.findOne = async (req,res) => {
+  // validate request
+  if (!req.body) {
+    res.status(400).send({message: "student can not be empty"});
+    return;
+  }
+
+  try {
+    const result = await client.db(DB_NAME).collection(COLLECTION_NAME).find({_id: ObjectId(req.params.id)}) .toArray();
+    console.log(
+      `Students: ${JSON.stringify(result)}`,
+    );
+    res.json(result);
+  } catch(e) {
+    console.log(e.message || "err ocurred while getting student");
+  }
+}
+
 // Update a student information
 exports.update = async (req,res) => {
   // validate request

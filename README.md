@@ -2,7 +2,6 @@
 
 ```
 npm install
-npm run initdb
 npm start
 ```
 

@@ -1,4 +1,5 @@
 const { MongoClient } = require('mongodb');
+const ObjectId = require('mongodb').ObjectId;
 const USERNAME = encodeURIComponent("dbp2");
 const PASSWORD = encodeURIComponent("GBKMbJoZDhHcIwO0");
 const MONGO_URI= `mongodb+srv://${USERNAME}:${PASSWORD}@cluster0.6ud8xet.mongodb.net/?retryWrites=true&w=majority`;
@@ -19,7 +20,7 @@ exports.create = async (req,res) => {
     console.log(
       `A student was inserted with the _id: ${result.insertedId}`,
     );
-    res.send(200);
+    res.sendStatus(200);
   } catch(e) {
     console.log(e.message || "err ocurred while creating student");
   }
@@ -40,7 +41,7 @@ exports.find = async (req,res) => {
       );
       res.json(result);
     } catch(e) {
-      console.log(e.message || "err ocurred while creating student");
+      console.log(e.message || "err ocurred while getting student");
     }
 }
 
@@ -52,15 +53,26 @@ exports.update = async (req,res) => {
     return;
   }
 
+  console.log(typeof req.params.id);
+  console.log(req.body.name);
+
   try {
-    const result = await client.db(DB_NAME).collection(COLLECTION_NAME).find({ name: "Ting" }).toArray();
-    console.log(
-      `All students: ${result}`,
+    const result = await client.db(DB_NAME).collection(COLLECTION_NAME).updateOne(
+      { _id: ObjectId(req.params.id) },
+      {
+        $set: {
+          name: req.body.name,
+          twitterAccount: req.body.twitterAccount
+        },
+        $currentDate: { lastModified: true }
+      }
     );
+    console.log(
+      `Updated student: ${JSON.stringify(result)}`,
+    );
+    res.sendStatus(200);
   } catch(e) {
-    console.log(e.message || "err ocurred while creating student");
-  } finally {
-    await client.close();
+    console.log(e.message || "err ocurred while updating student");
   }
 }
 
@@ -73,13 +85,11 @@ exports.delete = async (req,res) => {
   }
 
   try {
-    const result = await client.db(DB_NAME).collection(COLLECTION_NAME).find({ name: "Ting" });
+    const result = await client.db(DB_NAME).collection(COLLECTION_NAME).deleteOne({ _id: ObjectId(req.params.id) });
     console.log(
-      `All students: ${result.name}`,
+      `Delete: ${JSON.stringify(result)}`,
     );
   } catch(e) {
-    console.log(e.message || "err ocurred while creating student");
-  } finally {
-    await client.close();
+    console.log(e.message || "err ocurred while deleting student");
   }
 }

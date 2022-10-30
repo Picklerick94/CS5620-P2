@@ -5,7 +5,6 @@ const controller = require('../controller/controller');
 let bodyParser = require('body-parser');
 
 route.use(bodyParser.json());
-// const myDB = require('../MyMongoDB/MyMongoDB');
 
 route.get('/', (req,res) =>{
   res.sendFile(path.resolve(path.join(process.cwd(), '/views/index.html')));
@@ -18,5 +17,7 @@ route.get('/student', (req,res) =>{
 // API
 route.post('/api/student', controller.create);
 route.get('/api/students', controller.find);
+route.put('/api/students/:id', controller.update);
+route.delete('/api/students/:id', controller.delete);
 
 module.exports = route;

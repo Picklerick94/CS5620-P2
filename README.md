@@ -6,6 +6,8 @@ npm start
 ```
 
 ```
+all id below is referring to field _id
+-----------
 post: /api/student
 data format example:
 const student = {
@@ -22,6 +24,7 @@ const student = {
     }
 ---------
 get all: /api/students
+get all: /api/students/:id
 ---------
 update one student: /api/students/:id
 update params example:

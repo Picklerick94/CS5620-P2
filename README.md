@@ -20,8 +20,19 @@ const student = {
         }
       ]
     }
-
+---------
 get all: /api/students
+---------
+update one student: /api/students/:id
+update params example:
+const student = {
+      name: "Dylan",
+      NUID: 2345678,
+      twitterAccount: "@dylan123"
+    }
+---------
+delete: /api/students/:id
+no param
 
 ```
 

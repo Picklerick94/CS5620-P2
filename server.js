@@ -1,6 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
+const session = require('express-session');
 const bodyparser = require('body-parser');
 const path = require('path');
 const route = express.Router();
@@ -16,6 +17,15 @@ app.use(morgan('tiny'));
 
 // mongdb connection
 connectDB();
+
+// init session
+// change this when on production
+app.use(session({
+  secret: 'tweet for reading',
+  resave: false,
+  saveUninitialized: false,
+  cookie: { secure: false }
+}))
 
 // parse request to body-parser
 app.use(bodyparser.urlencoded({extended:true}));

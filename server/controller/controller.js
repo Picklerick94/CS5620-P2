@@ -1,128 +1,159 @@
-const { MongoClient } = require('mongodb');
-const { TwitterApi } = require('twitter-api-v2');
-const ObjectId = require('mongodb').ObjectId;
+const { MongoClient } = require("mongodb");
+const { TwitterApi } = require("twitter-api-v2");
+const ObjectId = require("mongodb").ObjectId;
 // remove this later
 const USERNAME = encodeURIComponent("dbp2");
 const PASSWORD = encodeURIComponent("GBKMbJoZDhHcIwO0");
-const MONGO_URI= `mongodb+srv://${USERNAME}:${PASSWORD}@cluster0.6ud8xet.mongodb.net/?retryWrites=true&w=majority`;
+const MONGO_URI = `mongodb+srv://${USERNAME}:${PASSWORD}@cluster0.6ud8xet.mongodb.net/?retryWrites=true&w=majority`;
 
 const client = new MongoClient(MONGO_URI);
 const DB_NAME = "sample_students";
 const COLLECTION_NAME = "studentslists";
 
-const twitterClient = new TwitterApi('AAAAAAAAAAAAAAAAAAAAAKwLiwEAAAAArgUF7g8j%2F3DXjjMxYHXxStwTe1w%3DQIYZjprz85c0w037hSFxMh5RFdBYb4LeV3mPEsf4vgesBhZvGk');
+const twitterClient = new TwitterApi(
+  "AAAAAAAAAAAAAAAAAAAAAKwLiwEAAAAArgUF7g8j%2F3DXjjMxYHXxStwTe1w%3DQIYZjprz85c0w037hSFxMh5RFdBYb4LeV3mPEsf4vgesBhZvGk"
+);
 const readOnlyClient = twitterClient.readOnly;
 
 // create and save new students
-exports.create = async (req,res) => {
-  // validate request
+exports.create = async (req, res) => {
   if (!req.body) {
-    res.status(400).send({message: "student can not be empty"});
+    res.status(400).send({ message: "student can not be empty" });
     return;
   }
 
   const user = await readOnlyClient.v2.userByUsername(req.body.twitterAccount);
-  const tweetsOfUser = await readOnlyClient.v2.userTimeline(user.data.id, {'tweet.fields': ['created_at']});
+  const tweetsOfUser = await readOnlyClient.v2.userTimeline(user.data.id, {
+    "tweet.fields": ["created_at"],
+  });
   const tweetsRaw = tweetsOfUser._realData.data;
-  console.log(tweetsRaw);
-  // req.body.tweets = tweetsRaw;
+  req.body.tweets = tweetsRaw;
 
-  // try {
-  //   const result = await client.db(DB_NAME).collection(COLLECTION_NAME).insertOne(req.body);
-  //   console.log(
-  //     `A student was inserted with the _id: ${result.insertedId}`,
-  //   );
-  //   res.sendStatus(200);
-  // } catch(e) {
-  //   console.log(e.message || "err ocurred while creating student");
-  //   res.sendStatus(500);
-  // }
-}
+  try {
+    const result = await client
+      .db(DB_NAME)
+      .collection(COLLECTION_NAME)
+      .insertOne(req.body);
+    console.log(`A student was inserted with the _id: ${result.insertedId}`);
+    res.sendStatus(200);
+  } catch (e) {
+    console.log(e.message || "err ocurred while creating student");
+    res.sendStatus(500);
+  }
+};
 
 // find and return all students
-exports.find = async (req,res) => {
-    // validate request
-    if (!req.body) {
-      res.status(400).send({message: "student can not be empty"});
-      return;
-    }
-
-    try {
-      const result = await client.db(DB_NAME).collection(COLLECTION_NAME).find({}) .toArray();
-      console.log(
-        `All students: ${JSON.stringify(result)}`,
-      );
-      res.json(result);
-    } catch(e) {
-      console.log(e.message || "err ocurred while getting student");
-    }
-}
-
-exports.findOne = async (req,res) => {
-  // validate request
+exports.find = async (req, res) => {
   if (!req.body) {
-    res.status(400).send({message: "student can not be empty"});
+    res.status(400).send({ message: "student can not be empty" });
     return;
   }
 
   try {
-    const result = await client.db(DB_NAME).collection(COLLECTION_NAME).find({_id: ObjectId(req.params.id)}) .toArray();
-    console.log(
-      `Students: ${JSON.stringify(result)}`,
-    );
+    const result = await client
+      .db(DB_NAME)
+      .collection(COLLECTION_NAME)
+      .find({})
+      .toArray();
+    console.log(`All students found`);
     res.json(result);
-  } catch(e) {
+  } catch (e) {
     console.log(e.message || "err ocurred while getting student");
   }
-}
+};
+
+exports.findOne = async (req, res) => {
+  if (!req.body) {
+    res.status(400).send({ message: "student can not be empty" });
+    return;
+  }
+
+  try {
+    const result = await client
+      .db(DB_NAME)
+      .collection(COLLECTION_NAME)
+      .find({ _id: ObjectId(req.params.id) })
+      .toArray();
+    console.log(`Student: ${JSON.stringify(result)}`);
+    res.json(result);
+  } catch (e) {
+    console.log(e.message || "err ocurred while getting student");
+  }
+};
 
 // Update a student information
-exports.update = async (req,res) => {
-  // validate request
+exports.update = async (req, res) => {
   if (!req.body) {
-    res.status(400).send({message: "student can not be empty"});
+    res.status(400).send({ message: "student can not be empty" });
     return;
   }
 
-  console.log(typeof req.params.id);
-  console.log(req.body.name);
-
-  // if req has twitter account update, pull tweets again
-
   try {
-    const result = await client.db(DB_NAME).collection(COLLECTION_NAME).updateOne(
-      { _id: ObjectId(req.params.id) },
-      {
-        $set: {
-          name: req.body.name,
-          twitterAccount: req.body.twitterAccount
-        },
-        $currentDate: { lastModified: true }
-      }
-    );
-    console.log(
-      `Updated student: ${JSON.stringify(result)}`,
-    );
+    const result = await client
+      .db(DB_NAME)
+      .collection(COLLECTION_NAME)
+      .updateOne(
+        { _id: ObjectId(req.params.id) },
+        {
+          $set: {
+            name: req.body.name,
+            NUID: req.body.NUID,
+          },
+          $currentDate: { lastModified: true },
+        }
+      );
+    console.log(`Updated student: ${JSON.stringify(result)}`);
     res.sendStatus(200);
-  } catch(e) {
+  } catch (e) {
     console.log(e.message || "err ocurred while updating student");
   }
-}
+};
 
 // Delete a student
-exports.delete = async (req,res) => {
+exports.delete = async (req, res) => {
   // validate request
   if (!req.body) {
-    res.status(400).send({message: "student can not be empty"});
+    res.status(400).send({ message: "student can not be empty" });
     return;
   }
 
   try {
-    const result = await client.db(DB_NAME).collection(COLLECTION_NAME).deleteOne({ _id: ObjectId(req.params.id) });
-    console.log(
-      `Delete: ${JSON.stringify(result)}`,
-    );
-  } catch(e) {
+    const result = await client
+      .db(DB_NAME)
+      .collection(COLLECTION_NAME)
+      .deleteOne({ _id: ObjectId(req.params.id) });
+    console.log(`Delete: ${JSON.stringify(result)}`);
+  } catch (e) {
     console.log(e.message || "err ocurred while deleting student");
   }
-}
+};
+
+// get current user
+exports.login = async (req, res) => {
+  console.log(req.session)
+  res.json({
+    isLoggedIn: !!req.session.user,
+    user: req.session.user,
+  });
+};
+
+exports.authenticate = async (req, res) => {
+  const user = req.body;
+
+  try {
+    const result = await client
+      .db(DB_NAME)
+      .collection("usersLists")
+      .find({ username: user.username })
+      .toArray();
+    if (user.password == result[0].password) {
+      req.session.user = { user: user.username };
+      res.json({ isLoggedIn: true, err: null });
+    }
+    res.sendStatus(200);
+  } catch (e) {
+    console.log(e.message || "Incorrect username password combination");
+    req.session.user = null;
+    res.json({ isLoggedIn: false, err: "Incorrect username password combination" });
+  }
+};

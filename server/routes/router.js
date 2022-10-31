@@ -21,4 +21,7 @@ route.get('/api/students/:id', controller.findOne);
 route.put('/api/students/:id', controller.update);
 route.delete('/api/students/:id', controller.delete);
 
+route.get('/api/getCurrUser', controller.login);
+route.post('/api/authenticate', controller.authenticate);
+
 module.exports = route;

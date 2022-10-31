@@ -12,7 +12,7 @@ Check login status
 -----------
 API: /api/getCurrUser
 Method: POST
-Params:
+Body:
 {
     "isLoggedIn": booleam,
     "user": {
@@ -24,7 +24,7 @@ User login
 -----------
 API: /api/authenticate
 Method: POST
-Params:
+Body:
 {
   username: "admin123",
   password: "1234567"
@@ -34,7 +34,7 @@ Create a student
 -----------
 API: /api/student
 Method: POST
-Params:
+Body:
 const student = {
       name: "Dylan",
       NUID: 2345678,
@@ -50,12 +50,21 @@ Get one students
 ---------
 API: /api/students/:id
 Method: GET
+Param:
+field id
+
+Search student name
+---------
+API: /api/search
+Method: GET
+Query:
+name=String
 
 Update one student
 ---------
 API: /api/students/:id
 Method: PUT
-Params:
+Param:
 const student = {
       name: "Dylan",
       NUID: 2345678
@@ -65,7 +74,7 @@ Delete one student
 ---------
 API: /api/students/:id
 Method: DELETE
-no param
+Param: field id
 
 ```
 

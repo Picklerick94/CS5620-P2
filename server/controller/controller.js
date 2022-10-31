@@ -111,7 +111,6 @@ exports.update = async (req, res) => {
 
 // Delete a student
 exports.delete = async (req, res) => {
-  // validate request
   if (!req.body) {
     res.status(400).send({ message: "student can not be empty" });
     return;
@@ -128,15 +127,15 @@ exports.delete = async (req, res) => {
   }
 };
 
-// get current user
+// Get current user
 exports.login = async (req, res) => {
-  console.log(req.session);
   res.json({
     isLoggedIn: !!req.session.user,
     user: req.session.user,
   });
 };
 
+// User loggin
 exports.authenticate = async (req, res) => {
   const user = req.body;
 
@@ -152,7 +151,6 @@ exports.authenticate = async (req, res) => {
     }
     res.sendStatus(200);
   } catch (e) {
-    console.log(e.message || "Incorrect username password combination");
     req.session.user = null;
     res.json({
       isLoggedIn: false,
@@ -160,3 +158,30 @@ exports.authenticate = async (req, res) => {
     });
   }
 };
+
+// Search
+exports.search = async (req, res) => {
+  // validateRequest(req);
+  const query = { $text: { $search: req.query.name } };
+  console.log(req.query.name);
+  try {
+    await client.db(DB_NAME).collection(COLLECTION_NAME).createIndex({ name: "text" });
+
+    const result = await client
+      .db(DB_NAME)
+      .collection(COLLECTION_NAME)
+      .find(query)
+      .toArray();
+    console.log(`Search result: ${JSON.stringify(result)}`);
+    res.json(result);
+  } catch (e) {
+    console.log(e.message || "err ocurred while getting student");
+  }
+};
+
+function validateRequest(req) {
+  if (!req.body) {
+    res.status(400).send({ message: "student can not be empty" });
+    return;
+  }
+}

@@ -1,11 +1,17 @@
 const { MongoClient } = require('mongodb');
+const { TwitterApi } = require('twitter-api-v2');
 const ObjectId = require('mongodb').ObjectId;
+// remove this later
 const USERNAME = encodeURIComponent("dbp2");
 const PASSWORD = encodeURIComponent("GBKMbJoZDhHcIwO0");
 const MONGO_URI= `mongodb+srv://${USERNAME}:${PASSWORD}@cluster0.6ud8xet.mongodb.net/?retryWrites=true&w=majority`;
+
 const client = new MongoClient(MONGO_URI);
 const DB_NAME = "sample_students";
 const COLLECTION_NAME = "studentslists";
+
+const twitterClient = new TwitterApi('AAAAAAAAAAAAAAAAAAAAAKwLiwEAAAAArgUF7g8j%2F3DXjjMxYHXxStwTe1w%3DQIYZjprz85c0w037hSFxMh5RFdBYb4LeV3mPEsf4vgesBhZvGk');
+const readOnlyClient = twitterClient.readOnly;
 
 // create and save new students
 exports.create = async (req,res) => {
@@ -15,6 +21,11 @@ exports.create = async (req,res) => {
     return;
   }
 
+  const user = await readOnlyClient.v2.userByUsername(req.body.twitterAccount);
+  const tweetsOfUser = await readOnlyClient.v2.userTimeline(user.data.id, { exclude: 'replies' });
+  const tweetsRaw = tweetsOfUser._realData.data;
+  req.body.tweets = tweetsRaw;
+  
   try {
     const result = await client.db(DB_NAME).collection(COLLECTION_NAME).insertOne(req.body);
     console.log(
@@ -23,6 +34,7 @@ exports.create = async (req,res) => {
     res.sendStatus(200);
   } catch(e) {
     console.log(e.message || "err ocurred while creating student");
+    res.sendStatus(500);
   }
 }
 

@@ -1,13 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/css/detail.css" />
-  <title>Tweet for reading</title>
-</head>
-<body>
-  <div class="test-detail">THIS IS A DETAIL PAGE</div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A page for reviewing students' tweets for the reading materials."
+    />
+    <meta name="author" content="Yixiang Xie & Ting Tang" />
+    <title>Tweeting for Reading</title>
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="/css/detail.css" />
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <h1>
+          <a href="./index.html">Tweeting for Reading</a>
+        </h1>
+      </nav>
+      <div class="user-info">
+        <img src="img/avatar-tweet.png" alt="User avatar" />
+        <span class="user-name">Tom</span>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="info-section">
+        <div class="info-card">
+          <div class="two-col">
+            <img
+              class="tweet-count-icon"
+              src="img/total.png"
+              alt="An icon indicating the total tweets section."
+            />
+            <div class="two-row">
+              <span class="first-row">Total tweets</span>
+              <span class="second-row" id="total-tweets-count">100</span>
+            </div>
+          </div>
+          <div class="two-col">
+            <img
+              class="tweet-count-icon"
+              src="img/missed.png"
+              alt="An icon indicating the missed tweets section."
+            />
+            <div class="two-row">
+              <span class="first-row">Deadline missed</span>
+              <span class="second-row" id="total-tweets-count">0</span>
+            </div>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="two-col">
+            <img
+              class="tweet-count-icon"
+              src="img/avatar-tweet.png"
+              alt="The profile image for the twitter user.  "
+            />
+            <div class="two-row">
+              <span class="first-row" id="student-info">
+                Ting Tang NUIDxxxxxx
+              </span>
+              <span class="second-row" id="twitter-handle">@jastangting</span>
+            </div>
+          </div>
+          <button id="edit-button">
+            Edit info
+          </button>
+        </div>
+      </div>
+      <div class="tweet-section">
+        <div class="section-title">Tweets</div>
+        <div class="tweets">
+          <div class="one-tweet">
+            <span class="date-time">Nov 7 02:20:22 AM</span>
+            <span class="deadline-date-time">
+              Post deadline:
+              <span>Nov 7 02:20:22 AM</span>
+            </span>
+            <span class="content-title">Content</span>
+            <span class="content">
+              Server side rendering: when user request for the first time,
+              server side will render the components/pages into HTML strings and
+              return to client side. Client side then saved the trouble of
+              generating DOM and run JS codes.
+            </span>
+          </div>
+          <div class="one-tweet">
+            <span class="date-time">Nov 7 02:20:22 AM</span>
+            <span class="deadline-date-time">
+              Post deadline:
+              <span>Nov 7 02:20:22 AM</span>
+            </span>
+            <span class="content-title">Content</span>
+            <span class="content">
+              Server side rendering: when user request for the first time,
+              server side will render the components/pages into HTML strings and
+              return to client side. Client side then saved the trouble of
+              generating DOM and run JS codes.
+            </span>
+          </div>
+          <div class="one-tweet">
+            <span class="date-time">Nov 7 02:20:22 AM</span>
+            <span class="deadline-date-time">
+              Post deadline:
+              <span>Nov 7 02:20:22 AM</span>
+            </span>
+            <span class="content-title">Content</span>
+            <span class="content">
+              Server side rendering: when user request for the first time,
+              server side will render the components/pages into HTML strings and
+              return to client side. Client side then saved the trouble of
+              generating DOM and run JS codes.
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <script src="js/index.js"></script> -->
+  </body>
 </html>

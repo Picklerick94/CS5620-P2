@@ -64,79 +64,31 @@ const displayContent = () => {
 
   tweets.forEach((tweet) => {
     const contentCard = document.createElement("div");
+
     contentCard.className = "content-card";
-
-    const personalInfo = document.createElement("div");
-    personalInfo.className = "personal-info";
-
-    const img = document.createElement("img");
-    img.src = "img/avatar-tweet.png";
-    img.alt = "The profile image for the twitter user.";
-    personalInfo.appendChild(img);
-
-    const infoList = document.createElement("div");
-    infoList.className = "info-list";
-
-    const firstRow = document.createElement("div");
-    firstRow.className = "first-row";
-
-    const studentName = document.createElement("span");
-    studentName.className = "student-name";
-    studentName.appendChild(
-      document.createTextNode(tweet.legalName || tweet.username)
-    );
-    firstRow.appendChild(studentName);
-
-    const nuid = document.createElement("span");
-    nuid.className = "nuid";
-    nuid.appendChild(
-      document.createTextNode(tweet.nuid ? "NUID" + tweet.nuid : "")
-    );
-    firstRow.appendChild(nuid);
-    infoList.appendChild(firstRow);
-
-    const secondRow = document.createElement("div");
-    secondRow.className = "second-row";
-
-    const twitterHandle = document.createElement("span");
-    twitterHandle.className = "twitter-handle";
-    twitterHandle.appendChild(document.createTextNode(tweet.twitterHandle));
-    secondRow.appendChild(twitterHandle);
-    infoList.appendChild(secondRow);
-    personalInfo.appendChild(infoList);
-    contentCard.appendChild(personalInfo);
-
-    const dateTime = document.createElement("div");
-    dateTime.className = "date-time";
-    dateTime.appendChild(document.createTextNode(tweet.dateTime));
-    contentCard.appendChild(dateTime);
-
-    const tweetContent = document.createElement("div");
-    tweetContent.className = "tweet-content";
-    tweetContent.appendChild(document.createTextNode(tweet.content));
-    contentCard.appendChild(tweetContent);
-
-    if (tweet.legalName) {
-      const operation = document.createElement("div");
-      operation.className = "operation";
-
-      const detail = document.createElement("button");
-      detail.className = "operation-button";
-      detail.appendChild(document.createTextNode("Detail"));
-      operation.appendChild(detail);
-
-      const edit = document.createElement("button");
-      edit.className = "operation-button";
-      edit.appendChild(document.createTextNode("Edit"));
-      operation.appendChild(edit);
-
-      const deleteButton = document.createElement("button");
-      deleteButton.className = "operation-button";
-      deleteButton.appendChild(document.createTextNode("Delete"));
-      operation.appendChild(deleteButton);
-
-      contentCard.appendChild(operation);
-    }
+    contentCard.innerHTML = `
+      <div class="personal-info">
+        <img src="img/avatar-tweet.png" alt="The profile image for the twitter user.">
+        <div class="info-list">
+          <div class="first-row">
+            <span class="student-name">${
+              tweet.legalName || tweet.username
+            }</span>
+            <span class="nuid">${tweet.nuid ? "NUID" + tweet.nuid : ""}</span>
+          </div>
+          <div class="second-row">
+            <span class="twitter-handle">${tweet.twitterHandle}</span>
+          </div>
+        </div>
+      </div>
+      <div class="date-time">${tweet.dateTime}</div>
+      <div class="tweet-content">${tweet.content}</div>  
+      <div class="operation">
+        <button class="operation-button">Detail</button>
+        <button class="operation-button">Edit</button>
+        <button class="operation-button">Delete</button>
+      </div>
+    `;
 
     content.appendChild(contentCard);
   });

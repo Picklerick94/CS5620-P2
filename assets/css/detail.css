@@ -1,3 +1,149 @@
-.test-detail {
-  color: gray;
+.container {
+  display: flex;
+  height: calc(100% - 60px);
+  width: 100%;
+  flex-flow: column;
+  background-color: #f5f5f5;
+}
+
+.info-section {
+  margin: 24px;
+  display: flex;
+}
+
+.info-card {
+  display: flex;
+  height: 170px;
+  width: 100%;
+  border-radius: 8px;
+  align-items: center;
+  background-color: white;
+}
+
+.info-card + .info-card {
+  margin-left: 24px;
+}
+
+.tweet-count-icon {
+  width: 70px;
+  height: 70px;
+}
+
+@media (max-width: 1024px) {
+  .info-section {
+    flex-flow: column;
+  }
+
+  .info-card + .info-card {
+    margin-left: 0;
+    margin-top: 24px;
+  }
+}
+
+.two-col {
+  display: flex;
+  align-items: center;
+  margin: 0 32px;
+  width: 100%;
+}
+
+.two-row {
+  display: flex;
+  margin-left: 8px;
+  flex-flow: column;
+  font-weight: 300;
+}
+
+.two-row > span + span {
+  margin-top: 12px;
+}
+
+.first-row {
+  font-size: 24px;
+  line-height: 24px;
+}
+
+.second-row {
+  font-size: 18px;
+  line-height: 22px;
+}
+
+#twitter-handle {
+  color: #8c8c8c;
+}
+
+#edit-button {
+  width: 100px;
+  height: 32px;
+  margin-right: 24px;
+  background-color: #6656dc;
+  color: white;
+  font-size: 14px;
+  line-height: 22px;
+  border: none;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#edit-button:hover {
+  background-color: #5647c9;
+}
+
+#edit-button:active {
+  background-color: #483bb0;
+}
+
+.tweet-section {
+  background-color: white;
+  margin: 0 24px 24px;
+  padding: 24px;
+  border-radius: 8px;
+  display: flex;
+  flex-flow: column;
+  overflow-y: scroll;
+}
+
+.section-title {
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: 300;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #eeeef5;
+}
+
+.tweets {
+  overflow-y: scroll;
+  height: 100%;
+}
+
+.one-tweet {
+  display: flex;
+  flex-flow: column;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.date-time {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  margin-top: 32px;
+}
+
+.deadline-date-time {
+  margin: 24px 0;
+  color: #8c8c8c;
+}
+
+.deadline-date-time > span {
+  color: #262626;
+}
+
+.content {
+  font-size: 14px;
+  line-height: 22px;
+  margin: 8px 0 16px 0;
+  color: #8c8c8c;
 }

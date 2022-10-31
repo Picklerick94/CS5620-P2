@@ -22,20 +22,21 @@ exports.create = async (req,res) => {
   }
 
   const user = await readOnlyClient.v2.userByUsername(req.body.twitterAccount);
-  const tweetsOfUser = await readOnlyClient.v2.userTimeline(user.data.id, { exclude: 'replies' });
+  const tweetsOfUser = await readOnlyClient.v2.userTimeline(user.data.id, {'tweet.fields': ['created_at']});
   const tweetsRaw = tweetsOfUser._realData.data;
-  req.body.tweets = tweetsRaw;
-  
-  try {
-    const result = await client.db(DB_NAME).collection(COLLECTION_NAME).insertOne(req.body);
-    console.log(
-      `A student was inserted with the _id: ${result.insertedId}`,
-    );
-    res.sendStatus(200);
-  } catch(e) {
-    console.log(e.message || "err ocurred while creating student");
-    res.sendStatus(500);
-  }
+  console.log(tweetsRaw);
+  // req.body.tweets = tweetsRaw;
+
+  // try {
+  //   const result = await client.db(DB_NAME).collection(COLLECTION_NAME).insertOne(req.body);
+  //   console.log(
+  //     `A student was inserted with the _id: ${result.insertedId}`,
+  //   );
+  //   res.sendStatus(200);
+  // } catch(e) {
+  //   console.log(e.message || "err ocurred while creating student");
+  //   res.sendStatus(500);
+  // }
 }
 
 // find and return all students
@@ -85,6 +86,8 @@ exports.update = async (req,res) => {
 
   console.log(typeof req.params.id);
   console.log(req.body.name);
+
+  // if req has twitter account update, pull tweets again
 
   try {
     const result = await client.db(DB_NAME).collection(COLLECTION_NAME).updateOne(

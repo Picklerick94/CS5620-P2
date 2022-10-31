@@ -130,7 +130,7 @@ exports.delete = async (req, res) => {
 
 // get current user
 exports.login = async (req, res) => {
-  console.log(req.session)
+  console.log(req.session);
   res.json({
     isLoggedIn: !!req.session.user,
     user: req.session.user,
@@ -154,6 +154,9 @@ exports.authenticate = async (req, res) => {
   } catch (e) {
     console.log(e.message || "Incorrect username password combination");
     req.session.user = null;
-    res.json({ isLoggedIn: false, err: "Incorrect username password combination" });
+    res.json({
+      isLoggedIn: false,
+      err: "Incorrect username password combination",
+    });
   }
 };

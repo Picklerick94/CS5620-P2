@@ -117,6 +117,7 @@ exports.delete = async (req, res) => {
       .collection(COLLECTION_NAME)
       .deleteOne({ _id: ObjectId(req.params.id) });
     console.log(`Delete: ${JSON.stringify(result)}`);
+    res.sendStatus(200);
   } catch (e) {
     console.log(e.message || "err ocurred while deleting student");
   }
@@ -133,6 +134,7 @@ exports.login = async (req, res) => {
 // User loggin
 exports.authenticate = async (req, res) => {
   const user = req.body;
+  console.log(user.username);
 
   try {
     const result = await client
@@ -140,11 +142,11 @@ exports.authenticate = async (req, res) => {
       .collection("usersLists")
       .find({ username: user.username })
       .toArray();
+    console.log("Server", user.password, result[0].password)
     if (user.password == result[0].password) {
       req.session.user = { user: user.username };
       res.json({ isLoggedIn: true, err: null });
     }
-    res.sendStatus(200);
   } catch (e) {
     req.session.user = null;
     res.json({

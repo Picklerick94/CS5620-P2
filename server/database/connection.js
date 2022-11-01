@@ -1,7 +1,6 @@
 const {MongoClient} = require('mongodb');
-const USERNAME = encodeURIComponent("dbp2");
-const PASSWORD = encodeURIComponent("GBKMbJoZDhHcIwO0");
 const uri = process.env.MONGODB_URI;
+console.log(uri)
 const client = new MongoClient(uri);
 
 const connectDB = async() => {

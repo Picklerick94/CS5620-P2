@@ -1,10 +1,6 @@
 const { MongoClient } = require("mongodb");
 const { TwitterApi } = require("twitter-api-v2");
 const ObjectId = require("mongodb").ObjectId;
-// remove this later
-// const USERNAME = encodeURIComponent();
-// const PASSWORD = encodeURIComponent();
-// const MONGO_URI = `mongodb+srv://dbp2:GBKMbJoZDhHcIwO0@cluster0.6ud8xet.mongodb.net/?retryWrites=true&w=majority`;
 const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri);
 const DB_NAME = "sample_students";

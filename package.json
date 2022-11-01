@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
-    "initdb": "mongoimport -d sample_students -c studentslists --jsonArray --file ./data/students.json"
+    "initdb": "mongoimport -d sample_students -c studentslists -c usersLists --jsonArray --file ./data/students.json --jsonArray --file ./data/users.json"
   },
   "repository": {
     "type": "git",

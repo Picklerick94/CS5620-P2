@@ -15,11 +15,13 @@
 
   <body>
     <h1>TweetingForReading</h1>
-    <span class="prompt">A page for reviewing students' tweets for the reading materials.</span>
+    <span class="prompt"
+      >A page for reviewing students' tweets for the reading materials.</span
+    >
 
     <div class="login-section">
       <span class="sign-in-tab">Sign in</span>
-      <form class="sign-in-form">
+      <form id="login" class="sign-in-form">
         <div class="form-item">
           <label for="username">Username</label>
           <input
@@ -49,5 +51,11 @@
     <footer>
       <small>Copyright ©2022 Produced by Yixiang Xie & Ting Tang</small>
     </footer>
+
+    <script type="module">
+      import clientIndex from "./js/login.js";
+
+      clientIndex.setupLogin();
+    </script>
   </body>
 </html>

@@ -1,5 +1,4 @@
 const express = require('express');
-const dotenv = require('dotenv');
 const morgan = require('morgan');
 const session = require('express-session');
 const bodyparser = require('body-parser');
@@ -9,8 +8,8 @@ const connectDB = require('./server/database/connection');
 
 const app = express();
 
-dotenv.config({path: 'config.env'});
 const PORT = process.env.PORT || 8080;
+if (PORT == null || PORT == "") { PORT = 3000; }
 
 // log request
 app.use(morgan('tiny'));
@@ -41,8 +40,6 @@ app.use('/js', express.static(path.resolve(__dirname, "assets/js")));
 // load routers
 app.use('/', require('./server/routes/router'))
 
-app.listen(process.env.PORT);
-
-// app.listen(3000,()=>{
-//   console.log(`server is running on http://localhost:${PORT}`);
-// });
+app.listen(PORT, function() {
+  console.log(`Listening on ${PORT}`)
+});

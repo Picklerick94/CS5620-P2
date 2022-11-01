@@ -1,8 +1,8 @@
 const {MongoClient} = require('mongodb');
 const USERNAME = encodeURIComponent("dbp2");
 const PASSWORD = encodeURIComponent("GBKMbJoZDhHcIwO0");
-const MONGO_URI= `mongodb+srv://${USERNAME}:${PASSWORD}@cluster0.6ud8xet.mongodb.net/?retryWrites=true&w=majority`;
-const client = new MongoClient(MONGO_URI);
+const uri = process.env.MONGODB_URI;
+const client = new MongoClient(uri);
 
 const connectDB = async() => {
   try {

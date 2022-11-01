@@ -8,7 +8,7 @@ const connectDB = require('./server/database/connection');
 
 const app = express();
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 if (PORT == null || PORT == "") { PORT = 3000; }
 
 // log request

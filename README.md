@@ -1,9 +1,12 @@
-# CS5620-P2
+# Tweet for reading
 
 ```
 npm install
+npm run initdb
 npm start
 ```
+env: has mongo command line utils installed, uses mongoimport
+local env: http://localhost:3000
 
 ```
 all id below is referring to field _id

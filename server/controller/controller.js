@@ -7,11 +7,11 @@ const DB_NAME = "sample_students";
 const COLLECTION_NAME = "studentslists";
 
 // remove this later
-const twitterClient = new TwitterApi(
-  "AAAAAAAAAAAAAAAAAAAAAKwLiwEAAAAArgUF7g8j%2F3DXjjMxYHXxStwTe1w%3DQIYZjprz85c0w037hSFxMh5RFdBYb4LeV3mPEsf4vgesBhZvGk"
-);
+// const twitterClient = new TwitterApi(
+//   "AAAAAAAAAAAAAAAAAAAAAKwLiwEAAAAArgUF7g8j%2F3DXjjMxYHXxStwTe1w%3DQIYZjprz85c0w037hSFxMh5RFdBYb4LeV3mPEsf4vgesBhZvGk"
+// );
+const twitterClient = new TwitterApi(process.env.TWITTER_TOKEN);
 const readOnlyClient = twitterClient.readOnly;
-console.log(process.env.TWITTER_TOKEN)
 
 // create and save new students
 exports.create = async (req, res) => {

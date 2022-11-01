@@ -25,7 +25,11 @@ exports.create = async (req, res) => {
     "tweet.fields": ["created_at"],
   });
   const tweetsRaw = tweetsOfUser._realData.data;
-  req.body.tweets = tweetsRaw;
+  // req.body.tweets = tweetsRaw;
+  req.body.tweets = tweetsRaw.filter(
+    (tweet) =>
+      tweet.text.includes("#WebDev") && tweet.text.includes("@NortheasternCA")
+  );
 
   try {
     const result = await client
@@ -145,7 +149,7 @@ exports.authenticate = async (req, res) => {
       .collection("usersLists")
       .find({ username: user.username })
       .toArray();
-    console.log("Server", user.password, result[0].password)
+    console.log("Server", user.password, result[0].password);
     if (user.password == result[0].password) {
       req.session.user = { user: user.username };
       res.json({ isLoggedIn: true, err: null });
@@ -161,9 +165,26 @@ exports.authenticate = async (req, res) => {
 
 // Search
 exports.search = async (req, res) => {
-  // validateRequest(req);
+  validateRequest(req);
   const query = { $text: { $search: req.query.name } };
-  console.log(req.query.name);
+
+  // try {
+  //   await client
+  //     .db(DB_NAME)
+  //     .collection(COLLECTION_NAME)
+  //     .createIndex({ name: "text" });
+
+  //   const result = await client
+  //     .db(DB_NAME)
+  //     .collection(COLLECTION_NAME)
+  //     .find({ tweets: { id: "1587321651653357568" } })
+  //     .toArray();
+  //   console.log(`Search result: ${JSON.stringify(result)}`);
+  //   res.json(result);
+  // } catch (e) {
+  //   console.log(e.message || "err ocurred while getting student");
+  // }
+
   try {
     await client
       .db(DB_NAME)

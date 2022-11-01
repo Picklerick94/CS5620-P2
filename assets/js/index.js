@@ -46,7 +46,7 @@ editModal.addEventListener("click", (event) => {
 
 const editStudentForm = document.querySelector(".edit-student-form");
 
-const displayContent = async () => {
+const displayContent = async (searchRes) => {
   const content = document.querySelector(".content");
 
   const loadingNotice = document.createElement("div");
@@ -57,7 +57,14 @@ const displayContent = async () => {
 
   content.appendChild(loadingNotice);
 
-  const students = await fetchAllStudents();
+  let students = [];
+
+  if (searchRes != undefined) {
+    if (searchRes.length > 0) students = searchRes;
+    else students = await fetchAllStudents();
+  } else {
+    students = await fetchAllStudents();
+  }
 
   const tweets = students.map((student) => {
     const allTweets = student.tweets;
@@ -201,3 +208,16 @@ editStudentForm.addEventListener("submit", async (e) => {
   editModal.style.display = "none";
   await displayContent();
 });
+
+  // search
+  const searchBar = document.querySelector("input#search-input");
+  searchBar.addEventListener("input", async (event) => {
+    const name = event.target.value;
+    const searchRes = await searchStudentsName(name);
+    await displayContent(searchRes);
+  });
+
+  async function searchStudentsName(name) {
+    const res = await fetch("/api/search?name=" + name);
+    return await res.json();
+  }

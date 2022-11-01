@@ -168,23 +168,6 @@ exports.search = async (req, res) => {
   validateRequest(req);
   const query = { $text: { $search: req.query.name } };
 
-  // try {
-  //   await client
-  //     .db(DB_NAME)
-  //     .collection(COLLECTION_NAME)
-  //     .createIndex({ name: "text" });
-
-  //   const result = await client
-  //     .db(DB_NAME)
-  //     .collection(COLLECTION_NAME)
-  //     .find({ tweets: { id: "1587321651653357568" } })
-  //     .toArray();
-  //   console.log(`Search result: ${JSON.stringify(result)}`);
-  //   res.json(result);
-  // } catch (e) {
-  //   console.log(e.message || "err ocurred while getting student");
-  // }
-
   try {
     await client
       .db(DB_NAME)
@@ -195,6 +178,25 @@ exports.search = async (req, res) => {
       .db(DB_NAME)
       .collection(COLLECTION_NAME)
       .find(query)
+      .toArray();
+    console.log(`Search result: ${JSON.stringify(result)}`);
+    res.json(result);
+  } catch (e) {
+    console.log(e.message || "err ocurred while getting student");
+  }
+};
+
+exports.searchContent = async (req, res) => {
+  validateRequest(req);
+  const query = { $text: { $search: req.query.content } };
+
+  try {
+    await client.db(DB_NAME).collection(COLLECTION_NAME);
+
+    const result = await client
+      .db(DB_NAME)
+      .collection(COLLECTION_NAME)
+      .find({ "tweets.id": "1587172696416145408" })
       .toArray();
     console.log(`Search result: ${JSON.stringify(result)}`);
     res.json(result);

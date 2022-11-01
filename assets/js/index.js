@@ -209,15 +209,35 @@ editStudentForm.addEventListener("submit", async (e) => {
   await displayContent();
 });
 
-  // search
-  const searchBar = document.querySelector("input#search-input");
-  searchBar.addEventListener("input", async (event) => {
-    const name = event.target.value;
-    const searchRes = await searchStudentsName(name);
-    await displayContent(searchRes);
-  });
+// search
+const searchBar = document.querySelector("input#search-input");
+searchBar.addEventListener("input", async (event) => {
+  const constSelect = document.querySelector("select#filter-input");
+  const value = event.target.value;
 
-  async function searchStudentsName(name) {
-    const res = await fetch("/api/search?name=" + name);
-    return await res.json();
+  if (value == "") {
+    await displayContent();
+  } else {
+    if (constSelect.options[constSelect.selectedIndex].value == "name") {
+      const name = value;
+      const searchRes = await searchStudentsName(name);
+      await displayContent(searchRes);
+    }
+
+    if (constSelect.options[constSelect.selectedIndex].value == "content") {
+      const content = value;
+      const searchContent = await searchTweet(content);
+      await displayContent(searchContent);
+    }
   }
+});
+
+async function searchStudentsName(name) {
+  const res = await fetch("/api/search?name=" + name);
+  return await res.json();
+}
+
+async function searchTweet(content) {
+  const res = await fetch("/api/searchContent?content=" + content);
+  return await res.json();
+}

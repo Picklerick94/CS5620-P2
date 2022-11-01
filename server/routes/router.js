@@ -14,7 +14,10 @@ route.get("/student/:id", (req, res) => {
 route.post("/api/student", controller.create);
 route.get("/api/students", controller.find);
 route.get("/api/students/:id", controller.findOne);
+
 route.get("/api/search", controller.search);
+route.get("/api/searchContent", controller.searchContent);
+
 route.put("/api/students/:id", controller.update);
 route.delete("/api/students/:id", controller.delete);
 

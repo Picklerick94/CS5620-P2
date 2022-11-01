@@ -39,5 +39,6 @@ npm start
 env: has mongo command line utils installed, uses mongoimport
 local env: http://localhost:3000/login.html
 
-username: admin123
-password: 1234567
+Demo username: admin123
+
+Demo password: 1234567

@@ -1,0 +1,179 @@
+[
+  {
+    "name": "Anshul Mathew",
+    "NUID": "0000005",
+    "twitterAccount": "Anshul_Mathew",
+    "tweets": [
+      {
+        "edit_history_tweet_ids": ["1587172696416145408"],
+        "text": "While working with Auth I stumbled upon cookies. Cookies introduce the concept of \"persistent state\" and allow the browser to \"remember\" something that the server told it previously. This is a pretty simple yet powerful concept that I've always wondered of\n#WebDev\n@NortheasternCA",
+        "id": "1587172696416145408",
+        "created_at": "2022-10-31T20:00:33.000Z"
+      },
+      {
+        "edit_history_tweet_ids": ["1584630288541708288"],
+        "text": "MQL is a powerful tool but the Aggregation framework is really powerful yet simple and personally, It not only dramatically reduces the length of the query but is able to pack in transforming data which otherwise uses more statements\n#WebDev \n@NortheasternCA",
+        "id": "1584630288541708288",
+        "created_at": "2022-10-24T19:37:56.000Z"
+      },
+      {
+        "edit_history_tweet_ids": ["1579913216754298881"],
+        "text": "Searching through string is data so much easier when you create a MongoDB database that uses an accent-insensitive, case-insensitive collation appropriate to the languages and culture of the users of the system. #WebDev @NortheasternCA",
+        "id": "1579913216754298881",
+        "created_at": "2022-10-11T19:13:58.000Z"
+      },
+      {
+        "edit_history_tweet_ids": ["1577172215606353920"],
+        "text": "@lrd_blkfyr It's just you xD",
+        "id": "1577172215606353920",
+        "created_at": "2022-10-04T05:42:13.000Z"
+      },
+      {
+        "edit_history_tweet_ids": ["1577171215894003712"],
+        "text": "It is interesting to note that JavaScript classes, introduced in ES6, are primarily syntactical sugar over JavaScript’s existing prototype-based inheritance. The class syntax does not introduce a new object-oriented inheritance model to JavaScript. #WebDev @NortheasternCA",
+        "id": "1577171215894003712",
+        "created_at": "2022-10-04T05:38:14.000Z"
+      },
+      {
+        "edit_history_tweet_ids": ["1572322258760404993"],
+        "text": "@duto_guerra Got to the last part",
+        "id": "1572322258760404993",
+        "created_at": "2022-09-20T20:30:13.000Z"
+      },
+      {
+        "edit_history_tweet_ids": ["1571842173414547456"],
+        "text": "It's been nearly 33 years since the dawn of the Web as we know of it. There have been several changes moving from Web 1.0, a static, centralized, read-only version to Web 3.0 version that aims to be dynamic, decentralized that uses machine learning and AI #WebDev @NortheasternCA",
+        "id": "1571842173414547456",
+        "created_at": "2022-09-19T12:42:32.000Z"
+      },
+      {
+        "edit_history_tweet_ids": ["1174709486415536129"],
+        "text": "@notakshayb I guess everyone moves on. Honestly it's sucks. It's hard especially sometimes when you consider the time you must have spent with these people. Cherish them. If it really works out and they worth the trouble, they'll try and make an effort to keep in touch.",
+        "id": "1174709486415536129",
+        "created_at": "2019-09-19T15:39:01.000Z"
+      },
+      {
+        "edit_history_tweet_ids": ["929708524615090178"],
+        "text": "@pranoynarayanan @ActorMadhavan Shouldve asked me to come :/",
+        "id": "929708524615090178",
+        "created_at": "2017-11-12T13:52:40.000Z"
+      },
+      {
+        "edit_history_tweet_ids": ["911969851672952832"],
+        "text": "@sardesairajdeep I hope some day you can cover some of the regressive rules here on campus :/",
+        "id": "911969851672952832",
+        "created_at": "2017-09-24T15:05:30.000Z"
+      }
+    ]
+  },
+  {
+    "name": "Ting Tang",
+    "NUID": "0000000",
+    "twitterAccount": "jastangting",
+    "tweets": [
+      {
+        "edit_history_tweet_ids": ["1587309857916432386"],
+        "text": "Diff algo runtime could be O(n^3) which is bad news for render. What did React diff do to reduce the runtime?\n1.Tree diff: only compare DOM nodes at the same level. 2. Component diff: if they are different types, delete and replace with new ones.\n#WebDev @NortheasternCA",
+        "id": "1587309857916432386",
+        "created_at": "2022-11-01T05:05:35.000Z"
+      },
+      {
+        "edit_history_tweet_ids": ["1584721605065744384"],
+        "text": "React fiber: In React V15, drop frame happens :( React V16 changed the stack reconciler to fiber reconciler, which is a singly-linked list with fiber nodes, to record prev and next steps. The traverse therefore can be stopped and restarted. #webdev @NortheasternCA",
+        "id": "1584721605065744384",
+        "created_at": "2022-10-25T01:40:48.000Z"
+      },
+      {
+        "edit_history_tweet_ids": ["1582247787437047808"],
+        "text": "week 5 - Server side rendering: when user request for the first time, server side will render the components/pages into HTML strings and return to client side. Client side then saved the trouble of generating DOM and run JS codes.\n#webdev @NortheasternCA",
+        "id": "1582247787437047808",
+        "created_at": "2022-10-18T05:50:43.000Z"
+      },
+      {
+        "edit_history_tweet_ids": ["1579720228145012736"],
+        "text": "week 4 - why doesn't HTML form submit cause CORS error? Submit form will redirect to a new domain, the original page can't retrieve the updated content, which is different from ajax request. #webdev @NortheasternCA",
+        "id": "1579720228145012736",
+        "created_at": "2022-10-11T06:27:06.000Z"
+      },
+      {
+        "edit_history_tweet_ids": ["1577186299101868032"],
+        "text": "week 3 - About Node.js multithreading. When facing CPU-intensive tasks, Node.js uses child_process to \"clone threads\" and creates the master-worker mode. \n#WebDev @NortheasternCA",
+        "id": "1577186299101868032",
+        "created_at": "2022-10-04T06:38:11.000Z"
+      },
+      {
+        "edit_history_tweet_ids": ["1574599785172021250"],
+        "text": "Week 2 - how did closure happen? When accessing a variable, a parser would: Step 1. Look for the variable at its current local scope, if no -&gt; Look for the variable at the \"parent\" scope, if not -&gt; Repeatedly looking for it until its found or not found. #WebDev @NortheasternCA",
+        "id": "1574599785172021250",
+        "created_at": "2022-09-27T03:20:18.000Z"
+      },
+      {
+        "edit_history_tweet_ids": ["1572322361919303680"],
+        "text": "@duto_guerra reply",
+        "id": "1572322361919303680",
+        "created_at": "2022-09-20T20:30:38.000Z"
+      },
+      {
+        "edit_history_tweet_ids": ["1571656948185198592"],
+        "text": "【week 1 reading】Why do we need TCP 3-way handshake and what are the handshakes about - to transmit data in a safe way. Handshake 1: Hi, this is client side. Handshake 2: Hi client side, received, this is server side. Handshake 3: Let's connect then.\n\n#WebDev @NortheasternCA",
+        "id": "1571656948185198592",
+        "created_at": "2022-09-19T00:26:31.000Z"
+      }
+    ]
+  },
+  {
+    "name": "Yixiang Xie",
+    "NUID": "0000001",
+    "twitterAccount": "YixiangXie4",
+    "tweets": [
+      {
+        "id": "1587321651653357568",
+        "edit_history_tweet_ids": ["1587321651653357568"],
+        "created_at": "2022-11-01T05:52:27.000Z",
+        "text": "With experience in Vue.js and React.js, I can see some major differences between them. React uses JSX and single-file component structure, whereas Vue uses HTML template to organize the files. There's no right way to do it but personally I prefer React.  \n#WebDev @NortheasternCA"
+      },
+      {
+        "id": "1584824718493827072",
+        "edit_history_tweet_ids": ["1584824718493827072"],
+        "created_at": "2022-10-25T08:30:32.000Z",
+        "text": "Repainting is triggered each time real DOM is updated, and it becomes slow when there're too many nodes. React keeps a virtual DOM and updates it first, and chooses the right time to update real DOM. This reduces repainting and gains better performance.\n#WebDev @NortheasternCA"
+      },
+      {
+        "id": "1582297526253678593",
+        "edit_history_tweet_ids": ["1582297526253678593"],
+        "created_at": "2022-10-18T09:08:22.000Z",
+        "text": "When working with forms, it's the best practice that the for attribute of a label takes the value of the id attribute which it is associated with. This helps with usability and accessibility, for example people can click on the label to activate the input. #WebDev @NortheasternCA"
+      },
+      {
+        "id": "1579748296763281410",
+        "edit_history_tweet_ids": ["1579748296763281410"],
+        "created_at": "2022-10-11T08:18:38.000Z",
+        "text": "Choosing between SQL databases and NoSQL databases such as MongoDB is hard—but you can use them both at the same time. Just make sure use the right one for the right job. For example, storing transactional records in SQL and schema-less records in NoSQL. #WebDev @NortheasternCA"
+      },
+      {
+        "id": "1577196134283419649",
+        "edit_history_tweet_ids": ["1577196134283419649"],
+        "created_at": "2022-10-04T07:17:15.000Z",
+        "text": "Now installing Node.js comes with npm and npx. As a package manager, npm is used to install packages and modules. While npx executes a package without installing it. A useful example is to run `npx create-react-app my-app` to create a learner React env.\n\n#WebDev @NortheasternCA"
+      },
+      {
+        "id": "1573495723890352128",
+        "edit_history_tweet_ids": ["1573495723890352128"],
+        "created_at": "2022-09-24T02:13:09.000Z",
+        "text": "JavaScript makes frontend pages interactive. But developers want it also to be powerful outside of a browser, so Node.js was born. Then JS can be used as a backend language in the server-side. Based on Node.js, we have Express as the backend framework.  #WebDev @NortheasternCA"
+      },
+      {
+        "id": "1572322227236012033",
+        "edit_history_tweet_ids": ["1572322227236012033"],
+        "created_at": "2022-09-20T20:30:05.000Z",
+        "text": "@duto_guerra got it"
+      },
+      {
+        "id": "1572078724841082888",
+        "edit_history_tweet_ids": ["1572078724841082888"],
+        "created_at": "2022-09-20T04:22:30.000Z",
+        "text": "With knowledge in XML, HTML looks very familiar. Both markup languages take the form of opening and closing tags. However, you can define new tags in XML and only use predefined tags in HTML. XML is for transporting data while HTML is for displaying them.\n\n#WebDev @NortheasternCA"
+      }
+    ]
+  }
+]

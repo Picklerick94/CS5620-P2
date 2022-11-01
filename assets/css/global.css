@@ -11,7 +11,7 @@ body {
 }
 
 header {
-  height: 60px;
+  height: 59px;
   position: sticky;
   top: 0%;
   width: 100%;
@@ -47,4 +47,12 @@ nav a:visited {
 .user-name {
   font-size: 14px;
   line-height: 22px;
+}
+
+.container {
+  display: flex;
+  height: calc(100% - 60px);
+  width: 100%;
+  flex-flow: column;
+  background-color: #f5f5f5;
 }

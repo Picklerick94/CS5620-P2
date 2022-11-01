@@ -38,7 +38,7 @@
             />
             <div class="two-row">
               <span class="first-row">Total tweets</span>
-              <span class="second-row" id="total-tweets-count">100</span>
+              <span class="second-row" id="total-tweets-count"></span>
             </div>
           </div>
           <div class="two-col">
@@ -49,7 +49,7 @@
             />
             <div class="two-row">
               <span class="first-row">Deadline missed</span>
-              <span class="second-row" id="total-tweets-count">0</span>
+              <span class="second-row" id="missed-tweets-count"></span>
             </div>
           </div>
         </div>
@@ -61,65 +61,18 @@
               alt="The profile image for the twitter user.  "
             />
             <div class="two-row">
-              <span class="first-row" id="student-info">
-                Ting Tang NUIDxxxxxx
-              </span>
-              <span class="second-row" id="twitter-handle">@jastangting</span>
+              <span class="first-row" id="student-info"></span>
+              <span class="second-row" id="twitter-handle"></span>
             </div>
           </div>
-          <button id="edit-button">
-            Edit info
-          </button>
+          <button id="edit-button">Edit info</button>
         </div>
       </div>
       <div class="tweet-section">
         <div class="section-title">Tweets</div>
-        <div class="tweets">
-          <div class="one-tweet">
-            <span class="date-time">Nov 7 02:20:22 AM</span>
-            <span class="deadline-date-time">
-              Post deadline:
-              <span>Nov 7 02:20:22 AM</span>
-            </span>
-            <span class="content-title">Content</span>
-            <span class="content">
-              Server side rendering: when user request for the first time,
-              server side will render the components/pages into HTML strings and
-              return to client side. Client side then saved the trouble of
-              generating DOM and run JS codes.
-            </span>
-          </div>
-          <div class="one-tweet">
-            <span class="date-time">Nov 7 02:20:22 AM</span>
-            <span class="deadline-date-time">
-              Post deadline:
-              <span>Nov 7 02:20:22 AM</span>
-            </span>
-            <span class="content-title">Content</span>
-            <span class="content">
-              Server side rendering: when user request for the first time,
-              server side will render the components/pages into HTML strings and
-              return to client side. Client side then saved the trouble of
-              generating DOM and run JS codes.
-            </span>
-          </div>
-          <div class="one-tweet">
-            <span class="date-time">Nov 7 02:20:22 AM</span>
-            <span class="deadline-date-time">
-              Post deadline:
-              <span>Nov 7 02:20:22 AM</span>
-            </span>
-            <span class="content-title">Content</span>
-            <span class="content">
-              Server side rendering: when user request for the first time,
-              server side will render the components/pages into HTML strings and
-              return to client side. Client side then saved the trouble of
-              generating DOM and run JS codes.
-            </span>
-          </div>
-        </div>
+        <div class="tweets"></div>
       </div>
     </div>
-    <!-- <script src="js/index.js"></script> -->
+    <script src="js/detail.js"></script>
   </body>
 </html>

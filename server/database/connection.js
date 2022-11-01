@@ -1,6 +1,6 @@
 const {MongoClient} = require('mongodb');
 const uri = process.env.MONGODB_URI;
-console.log(uri)
+console.log(666666, uri)
 const client = new MongoClient(uri);
 
 const connectDB = async() => {

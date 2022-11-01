@@ -2,14 +2,15 @@ const { MongoClient } = require("mongodb");
 const { TwitterApi } = require("twitter-api-v2");
 const ObjectId = require("mongodb").ObjectId;
 // remove this later
-const USERNAME = encodeURIComponent("dbp2");
-const PASSWORD = encodeURIComponent("GBKMbJoZDhHcIwO0");
-const MONGO_URI = `mongodb+srv://${USERNAME}:${PASSWORD}@cluster0.6ud8xet.mongodb.net/?retryWrites=true&w=majority`;
+// const USERNAME = encodeURIComponent();
+// const PASSWORD = encodeURIComponent();
+// const MONGO_URI = `mongodb+srv://dbp2:GBKMbJoZDhHcIwO0@cluster0.6ud8xet.mongodb.net/?retryWrites=true&w=majority`;
+const MONGO_URI = process.env.MONGODB_URI;
 
 const client = new MongoClient(MONGO_URI);
 const DB_NAME = "sample_students";
 const COLLECTION_NAME = "studentslists";
-
+// remove this later
 const twitterClient = new TwitterApi(
   "AAAAAAAAAAAAAAAAAAAAAKwLiwEAAAAArgUF7g8j%2F3DXjjMxYHXxStwTe1w%3DQIYZjprz85c0w037hSFxMh5RFdBYb4LeV3mPEsf4vgesBhZvGk"
 );

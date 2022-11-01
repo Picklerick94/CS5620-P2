@@ -32,7 +32,7 @@ function Login() {
           body: new URLSearchParams(new FormData(form)),
         });
         const resUser = await res.json();
-        console.log(66666666, resUser)
+        console.log(66666666, resUser);
         if (resUser.isLoggedIn) {
           redirect("index");
         } else {

@@ -60,11 +60,11 @@ const displayContent = async (searchRes) => {
   let students = [];
 
   if (searchRes != undefined) {
-    console.log(6666)
+    console.log(6666);
     if (searchRes.length > 0) students = searchRes;
     else students = await fetchAllStudents();
   } else {
-    console.log(888)
+    console.log(888);
     students = await fetchAllStudents();
   }
 

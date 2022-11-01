@@ -14,9 +14,6 @@ if (PORT == null || PORT == "") { PORT = 3000; }
 // log request
 app.use(morgan('tiny'));
 
-// mongdb connection
-connectDB();
-
 // init session
 // change this when on production
 app.use(session({
@@ -43,3 +40,6 @@ app.use('/', require('./server/routes/router'))
 app.listen(PORT, function() {
   console.log(`Listening on ${PORT}`)
 });
+
+// mongdb connection
+connectDB();

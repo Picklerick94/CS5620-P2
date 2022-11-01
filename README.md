@@ -8,6 +8,9 @@ https://johnguerra.co/classes/webDevelopment_fall_2022/
 ### Project Objective ###
 A platform for checking whether the students from 5610 have completed their tweets
 
+### Project Link ###
+https://tweet-for-reading.herokuapp.com/
+
 ### Project slides ###
 https://docs.google.com/presentation/d/1GyUDhrrmc8PMYV2VDd1FoT21adIi3IN07nzLQKYK5N4/edit#slide=id.g17ba71ce8a0_0_30
 
@@ -35,6 +38,3 @@ npm start
 ```
 env: has mongo command line utils installed, uses mongoimport
 local env: http://localhost:3000
-
-```
-

@@ -5,9 +5,9 @@ const ObjectId = require("mongodb").ObjectId;
 // const USERNAME = encodeURIComponent();
 // const PASSWORD = encodeURIComponent();
 // const MONGO_URI = `mongodb+srv://dbp2:GBKMbJoZDhHcIwO0@cluster0.6ud8xet.mongodb.net/?retryWrites=true&w=majority`;
-const MONGO_URI = process.env.MONGODB_URI;
-
-const client = new MongoClient(MONGO_URI);
+const uri = process.env.MONGODB_URI;
+console.log(process.env)
+const client = new MongoClient(uri);
 const DB_NAME = "sample_students";
 const COLLECTION_NAME = "studentslists";
 // remove this later

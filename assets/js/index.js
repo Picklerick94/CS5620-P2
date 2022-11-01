@@ -1,7 +1,50 @@
+const createNewStudent = async ({ name, nuid, twitterAccount }) => {
+  return await fetch("/api/student", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      name,
+      NUID: nuid,
+      twitterAccount,
+    }),
+  });
+};
+
 const fetchAllStudents = async () => {
   const res = await fetch("/api/students");
   return await res.json();
 };
+
+const editStudent = async ({ id, name, nuid }) => {
+  return await fetch("/api/students/" + id, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      name,
+      NUID: nuid,
+    }),
+  });
+};
+
+const deleteStudent = async (id) => {
+  return await fetch("/api/students/" + id, {
+    method: "DELETE",
+  });
+};
+
+const editModal = document.querySelector(".edit-modal");
+
+editModal.addEventListener("click", (event) => {
+  if (event.target == editModal) {
+    editModal.style.display = "none";
+  }
+});
+
+const editStudentForm = document.querySelector(".edit-student-form");
 
 const displayContent = async () => {
   const content = document.querySelector(".content");
@@ -75,51 +118,86 @@ const displayContent = async () => {
       <div class="tweet-content">${tweet.content}</div>  
       <div class="operation">
         <a class="detail-link" href="./student/${tweet.studentId}">Detail</a>
-        <button class="operation-button">Edit</button>
-        <button class="operation-button">Delete</button>
+        <button class="operation-button edit-button" data-studentid=${
+          tweet.studentId
+        } data-name=${encodeURIComponent(tweet.name)} data-nuid=${tweet.NUID}>
+          Edit
+        </button>
+        <button class="operation-button delete-button" data-studentid=${
+          tweet.studentId
+        }>Delete</button>
       </div>
     `;
 
     content.appendChild(contentCard);
-    content.appendChild(contentCard);
+  });
+
+  const deleteButtons = document.querySelectorAll(".delete-button");
+  deleteButtons.forEach((button) => {
+    button.addEventListener("click", async (e) => {
+      const studentId = e.target.getAttribute("data-studentid");
+      await deleteStudent(studentId);
+      await displayContent();
+    });
+  });
+
+  const editButtons = document.querySelectorAll(".edit-button");
+  editButtons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+      editModal.style.display = "block";
+      const id = e.target.getAttribute("data-studentid");
+      const name = decodeURIComponent(e.target.getAttribute("data-name"));
+      const nuid = e.target.getAttribute("data-nuid");
+      editStudentForm.elements["name"].value = name;
+      editStudentForm.elements["nuid"].value = nuid;
+      editStudentForm.elements["id"].value = id;
+    });
   });
 };
 
 displayContent();
 
 const createButton = document.querySelector("#create-button");
-const modal = document.querySelector(".modal");
+const createModal = document.querySelector(".create-modal");
 
 createButton.addEventListener("click", () => {
-  modal.style.display = "block";
+  createModal.style.display = "block";
 });
 
-modal.addEventListener("click", (event) => {
-  if (event.target == modal) {
-    modal.style.display = "none";
+createModal.addEventListener("click", (event) => {
+  if (event.target == createModal) {
+    createModal.style.display = "none";
   }
 });
 
-const cancelButton = document.querySelector(".cancel-button");
+const cancelButtons = document.querySelectorAll(".cancel-button");
 
-cancelButton.addEventListener("click", (event) => {
-  modal.style.display = "none";
+cancelButtons.forEach((button) => {
+  button.addEventListener("click", (event) => {
+    createModal.style.display = "none";
+    editModal.style.display = "none";
+  });
 });
 
 const createStudentForm = document.querySelector(".create-student-form");
-const handleSubmit = (e) => {
+createStudentForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   const formData = new FormData(e.target);
   const formProps = Object.fromEntries(formData);
 
-  const tweet = tweets.find(
-    (tweet) => tweet.twitterHandle === formProps.twitterHandle
-  );
-  tweet.nuid = formProps.nuid;
-  tweet.legalName = formProps.legalName;
-  displayContent();
+  await createNewStudent(formProps);
   createStudentForm.reset();
-  modal.style.display = "none";
-};
+  createModal.style.display = "none";
+  await displayContent();
+});
 
-createStudentForm.addEventListener("submit", handleSubmit);
+editStudentForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const formData = new FormData(e.target);
+  const formProps = Object.fromEntries(formData);
+
+  await editStudent(formProps);
+  editStudentForm.reset();
+  editModal.style.display = "none";
+  await displayContent();
+});

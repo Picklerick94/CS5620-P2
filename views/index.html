@@ -48,20 +48,54 @@
         </button>
       </div>
       <div class="content"></div>
-      <div class="modal">
+      <div class="modal create-modal">
         <div class="modal-content">
           <h2>Create student</h2>
           <form class="create-student-form">
             <div class="form-item">
-              <label for="twitterHandle">Twitter handle:</label>
+              <label for="twitterAccount">Twitter handle:</label>
               <input
                 type="text"
                 placeholder="Twitter handle"
-                id="twitterHandle"
-                name="twitterHandle"
+                id="twitterAccount"
+                name="twitterAccount"
+                value="YutingShao28"
                 required
               />
             </div>
+            <div class="form-item">
+              <label for="nuid">NUID:</label>
+              <input
+                type="text"
+                placeholder="NUID"
+                id="nuid"
+                name="nuid"
+                value="00232323"
+                required
+              />
+            </div>
+            <div class="form-item">
+              <label for="name">Legal name:</label>
+              <input
+                type="text"
+                placeholder="Student legal name"
+                id="name"
+                name="name"
+                value="Yuting Shao"
+                required
+              />
+            </div>
+            <div class="button-container">
+              <button type="button" class="cancel-button">Cancel</button>
+              <button type="submit" class="confirm-button">Confirm</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal edit-modal">
+        <div class="modal-content">
+          <h2>Edit student</h2>
+          <form class="edit-student-form">
             <div class="form-item">
               <label for="nuid">NUID:</label>
               <input
@@ -73,14 +107,17 @@
               />
             </div>
             <div class="form-item">
-              <label for="legalName">Legal name:</label>
+              <label for="name">Legal name:</label>
               <input
                 type="text"
                 placeholder="Student legal name"
-                id="legalName"
-                name="legalName"
+                id="name"
+                name="name"
                 required
               />
+            </div>
+            <div class="hidden-form-item">
+              <input type="text" id="id" name="id" required />
             </div>
             <div class="button-container">
               <button type="button" class="cancel-button">Cancel</button>

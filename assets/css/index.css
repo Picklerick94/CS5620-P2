@@ -226,9 +226,8 @@
 .modal-content {
   background-color: white;
   margin: 15% auto;
-  padding: 20px;
-  width: 400px;
-  height: 324px;
+  padding: 16px 32px;
+  width: 360px;
   border-radius: 6px;
 }
 
@@ -252,11 +251,15 @@
   border: 1px solid rgb(217, 217, 217);
   border-radius: 5px;
   padding-left: 8px;
-  margin-top: 4px;
+  margin: 4px 0 0 0;
+}
+
+.hidden-form-item {
+  display: none;
 }
 
 .button-container {
-  margin-top: 32px;
+  margin: 32px 0 24px 0;
   width: 100%;
   display: flex;
   justify-content: space-between;

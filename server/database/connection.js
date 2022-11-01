@@ -1,17 +1,17 @@
-import { MongoClient } from "mongodb";
+const { MongoClient } = require('mongodb');
 
 const uri = process.env.MONGO_URI || "mongodb://localhost:27017";
 const client = new MongoClient(uri);
 
-const connectDB = async () => {
+const connectDB = async() => {
   try {
     await client.connect();
-    console.log("MongoDB connected");
+    console.log(`MongoDB connected`)
   } catch (err) {
     console.log(err);
   } finally {
-    await client.close();
+     await client.close();
   }
-};
+}
 
-export default connectDB;
+module.exports = connectDB;

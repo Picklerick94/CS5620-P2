@@ -1,7 +1,8 @@
-import express from "express";
-import controller from "../controller/controller.js";
-import bodyParser from "body-parser";
+const express = require("express");
+const path = require("path");
 const route = express.Router();
+const controller = require("../controller/controller");
+let bodyParser = require("body-parser");
 
 route.use(bodyParser.json());
 
@@ -20,4 +21,4 @@ route.delete("/api/students/:id", controller.delete);
 route.get("/api/getCurrUser", controller.login);
 route.post("/api/authenticate", controller.authenticate);
 
-export default route;
+module.exports = route;

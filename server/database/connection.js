@@ -1,4 +1,4 @@
-const {MongoClient} = require('mongodb');
+const { MongoClient } = require('mongodb');
 const uri = process.env.MONGO_URI;
 const client = new MongoClient(uri);
 
@@ -9,7 +9,6 @@ const connectDB = async() => {
   } catch (err) {
     console.log(err);
   } finally {
-     // exit
      await client.close();
   }
 }

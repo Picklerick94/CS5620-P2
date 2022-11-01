@@ -23,9 +23,6 @@ https://www.figma.com/file/CypFKOni7ZmlU3pEgvBdHj/5610_P2_Design?node-id=0%3A1
 https://youtu.be/2xvbc-P2qgE
 
 ### Instruction to build ###
-npm install
-
-# Tweet for reading
 
 ```
 npm install
@@ -35,6 +32,4 @@ npm start
 ```
 env: has mongo command line utils installed, uses mongoimport
 local env: http://localhost:3000
-
-```
 

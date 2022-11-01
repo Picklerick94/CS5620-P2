@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "build a platform for checking whether the students from 5610 have completed their tweets",
   "main": "server.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
     "initdb": "mongoimport -d sample_students -c studentslists -c usersLists --jsonArray --file ./data/students.json --jsonArray --file ./data/users.json"
   },
@@ -32,5 +32,10 @@
     "node-fetch": "^3.2.10",
     "nodemon": "^2.0.20",
     "twitter-api-v2": "^1.12.9"
+  },
+  "devDependencies": {
+    "eslint": "^8.26.0",
+    "eslint-config-prettier": "^8.5.0",
+    "prettier": "^2.7.1"
   }
 }

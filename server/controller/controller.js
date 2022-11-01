@@ -1,12 +1,17 @@
 const { MongoClient } = require("mongodb");
 const { TwitterApi } = require("twitter-api-v2");
 const ObjectId = require("mongodb").ObjectId;
-const uri = process.env.MONGO_URI;
+
+const USERNAME = encodeURIComponent("dbp2");
+const PASSWORD = encodeURIComponent("GBKMbJoZDhHcIwO0");
+const MONGO_URI= `mongodb+srv://${USERNAME}:${PASSWORD}@cluster0.6ud8xet.mongodb.net/?retryWrites=true&w=majority`;
+
+const uri = process.env.MONGO_URI || MONGO_URI;
 const client = new MongoClient(uri);
 const DB_NAME = "sample_students";
 const COLLECTION_NAME = "studentslists";
 
-const twitterClient = new TwitterApi(process.env.TWITTER_TOKEN);
+const twitterClient = new TwitterApi(process.env.TWITTER_TOKEN || 'AAAAAAAAAAAAAAAAAAAAAKwLiwEAAAAArgUF7g8j%2F3DXjjMxYHXxStwTe1w%3DQIYZjprz85c0w037hSFxMh5RFdBYb4LeV3mPEsf4vgesBhZvGk');
 const readOnlyClient = twitterClient.readOnly;
 
 // create and save new students

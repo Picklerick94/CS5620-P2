@@ -117,6 +117,7 @@ exports.delete = async (req, res) => {
       .collection(COLLECTION_NAME)
       .deleteOne({ _id: ObjectId(req.params.id) });
     console.log(`Delete: ${JSON.stringify(result)}`);
+    res.sendStatus(200);
   } catch (e) {
     console.log(e.message || "err ocurred while deleting student");
   }

@@ -16,8 +16,8 @@ https://docs.google.com/document/d/1iTJ12NKXAhBEsBo-3uvCx3L1BJ85Uaul97i7vYHPxdg/
 https://www.figma.com/file/CypFKOni7ZmlU3pEgvBdHj/5610_P2_Design?node-id=0%3A1
 
 ### Screenshot ###
-![alt text](https://assets.moveshanghai.com/Screenshot%202022-11-01%20at%2012.07.40.png, "Homepage")
-![alt text](https://assets.moveshanghai.com/Screenshot%202022-11-01%20at%2012.07.57.png, "Detail")
+![Start page](https://assets.moveshanghai.com/Screenshot%202022-11-01%20at%2012.07.40.png)
+![Start page](https://assets.moveshanghai.com/Screenshot%202022-11-01%20at%2012.07.57.png)
 
 ### Video demo ###
 https://youtu.be/2xvbc-P2qgE

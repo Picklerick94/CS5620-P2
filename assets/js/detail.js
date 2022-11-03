@@ -8,6 +8,11 @@ const fetchAllTweets = async () => {
   const res = await fetch("/api/students/" + studentId);
   return await res.json();
 };
+/*
+  It's a pratical app and I believe John would love it
+
+  You may also want to check the following function since I found the "Missed Deadlines number are not correct sometimes."
+*/
 
 const displayContent = async () => {
   const infoSection = document.querySelector(".info-section");
@@ -72,27 +77,25 @@ const displayContent = async () => {
 
       oneTweet.className = "one-tweet";
       oneTweet.innerHTML = `
-      <span class="date-time">${
-        dateTime.toLocaleString("default", {
-          month: "short",
-          day: "numeric",
-        }) +
+      <span class="date-time">${dateTime.toLocaleString("default", {
+        month: "short",
+        day: "numeric",
+      }) +
         " " +
         dateTime.toLocaleString("default", {
           timeStyle: "medium",
         })
-      }</span>
+        }</span>
       <span class="deadline-date-time">
         Post deadline:
-        <span>${
-          dueDate.toLocaleString("default", {
-            month: "short",
-            day: "numeric",
-          }) +
-          " " +
-          dueDate.toLocaleString("default", {
-            timeStyle: "medium",
-          })
+        <span>${dueDate.toLocaleString("default", {
+          month: "short",
+          day: "numeric",
+        }) +
+        " " +
+        dueDate.toLocaleString("default", {
+          timeStyle: "medium",
+        })
         }</span>
       </span>
       <span class="content-title">Content</span>

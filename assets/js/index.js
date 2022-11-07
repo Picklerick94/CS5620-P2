@@ -1,3 +1,11 @@
+/*
+  Comment: It is an amazing project that is useful in the real life! I like the part of searching tweets
+  and see the tweets date & time. It is practical.
+
+  The thing might be changed is that there is no creating users function. Users may
+  feel it is not belongs to him/her. Also, the tweets is often loading in the Heroku deployment.
+*/
+
 const createNewStudent = async ({ name, nuid, twitterAccount }) => {
   return await fetch("/api/student", {
     method: "POST",
